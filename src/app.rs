@@ -122,6 +122,15 @@ impl App {
                 app.tab = *t;
             }
         }
+        if let Ok(lines) = std::env::var("CALCBENCH_LINES") {
+            for l in lines.split(';') {
+                app.expression = l.to_string();
+                app.evaluate();
+            }
+        }
+        if let Ok(q) = std::env::var("CALCBENCH_CONSTANT") {
+            app.const_query = q;
+        }
         if let Ok(id) = std::env::var("CALCBENCH_FORMULA") {
             app.open_formula(&id);
         }
