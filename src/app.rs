@@ -25,6 +25,11 @@ pub const TABS: &[(Tab, &str)] = &[
 
 const SHOWN: usize = 60;
 
+#[cfg(target_os = "android")]
+const TOP_INSET: i8 = 40;
+#[cfg(not(target_os = "android"))]
+const TOP_INSET: i8 = 8;
+
 pub struct Card {
     pub id: String,
     pub inputs: HashMap<String, String>,
@@ -110,6 +115,19 @@ impl App {
         app
     }
 
+    pub fn opened(ctx: &egui::Context) -> Self {
+        let mut app = App::new(ctx);
+        if let Ok(tab) = std::env::var("CALCBENCH_TAB") {
+            if let Some((t, _)) = TABS.iter().find(|(_, l)| *l == tab) {
+                app.tab = *t;
+            }
+        }
+        if let Ok(id) = std::env::var("CALCBENCH_FORMULA") {
+            app.open_formula(&id);
+        }
+        app
+    }
+
     pub fn open_formula(&mut self, id: &str) {
         let Some(f) = formula::get(id) else { return };
         let inputs = f
@@ -138,7 +156,7 @@ impl App {
             self.installed = true;
         }
         egui::Panel::top("header")
-            .frame(egui::Frame::NONE.fill(CHASSIS).inner_margin(egui::Margin { left: 12, right: 12, top: 8, bottom: 6 }))
+            .frame(egui::Frame::NONE.fill(CHASSIS).inner_margin(egui::Margin { left: 12, right: 12, top: TOP_INSET, bottom: 6 }))
             .show(ui, |ui| {
                 ui.label(egui::RichText::new("CALCBENCH").font(legend_font(16.0)).color(VALUE).extra_letter_spacing(2.0));
                 ui.add_space(4.0);
@@ -727,7 +745,7 @@ pub fn run() -> eframe::Result<()> {
         .with_min_inner_size([360.0, 480.0])
         .with_title("calcbench")
         .with_app_id("calcbench");
-    eframe::run_native("calcbench", eframe::NativeOptions { viewport, ..Default::default() }, Box::new(|cc| Ok(Box::new(Shell(App::new(&cc.egui_ctx))))))
+    eframe::run_native("calcbench", eframe::NativeOptions { viewport, ..Default::default() }, Box::new(|cc| Ok(Box::new(Shell(App::opened(&cc.egui_ctx))))))
 }
 
 pub struct Shell(pub App);
@@ -742,6 +760,6 @@ impl eframe::App for Shell {
 #[unsafe(no_mangle)]
 fn android_main(app: android_activity::AndroidApp) {
     android_logger::init_once(android_logger::Config::default().with_max_level(log::LevelFilter::Info));
-    let opts = eframe::NativeOptions { android_app: Some(app), ..Default::default() };
+    let opts = eframe::NativeOptions { android_app: Some(app), renderer: eframe::Renderer::Glow, ..Default::default() };
     let _ = eframe::run_native("calcbench", opts, Box::new(|cc| Ok(Box::new(Shell(App::new(&cc.egui_ctx))))));
 }

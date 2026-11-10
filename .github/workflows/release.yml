@@ -1,0 +1,207 @@
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to build, without publishing"
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - name: Tag matches version and changelog
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          version=$(grep -m1 '^version' Cargo.toml | sed -E 's/.*"(.*)".*/\1/')
+          [ "${tag#v}" = "$version" ] || { echo "tag $tag is not version $version"; exit 1; }
+          grep -q "^## \[$version\]" CHANGELOG.md || { echo "CHANGELOG.md has no entry for $version"; exit 1; }
+
+  build:
+    needs: check
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - target: x86_64-unknown-linux-gnu
+            os: ubuntu-22.04
+          - target: aarch64-unknown-linux-gnu
+            os: ubuntu-22.04-arm
+          - target: aarch64-apple-darwin
+            os: macos-15
+          - target: x86_64-pc-windows-msvc
+            os: windows-latest
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - name: Linux libraries
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libgl1-mesa-dev libx11-dev libxcursor-dev libxrandr-dev libxi-dev libxkbcommon-dev libwayland-dev
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ matrix.target }}
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: ${{ matrix.target }}
+      - run: cargo build --release --locked --target ${{ matrix.target }}
+      - name: package
+        shell: bash
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          name=calcbench-${tag}-${{ matrix.target }}
+          mkdir -p "dist/$name"
+          cp README.md LICENSE "dist/$name/"
+          cp -r skills "dist/$name/"
+          cd dist
+          if [[ "${{ matrix.target }}" == *windows* ]]; then
+            cp "../target/${{ matrix.target }}/release/calcbench.exe" "$name/"
+            7z a "$name.zip" "$name" >/dev/null
+            sha256sum "$name.zip" > "$name.zip.sha256"
+          else
+            cp "../target/${{ matrix.target }}/release/calcbench" "$name/"
+            tar czf "$name.tar.gz" "$name"
+            shasum -a 256 "$name.tar.gz" > "$name.tar.gz.sha256"
+          fi
+      - name: deb
+        if: runner.os == 'Linux'
+        run: |
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          cargo install cargo-deb --locked
+          cargo deb --no-build --target ${{ matrix.target }} --deb-version "${tag#v}" --output "dist/calcbench-${tag}-${{ matrix.target }}.deb"
+          (cd dist && sha256sum "calcbench-${tag}-${{ matrix.target }}.deb" > "calcbench-${tag}-${{ matrix.target }}.deb.sha256")
+      - name: dmg
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          version="${tag#v}"
+          app="dmg/CalcBench.app"
+          mkdir -p "$app/Contents/MacOS" "$app/Contents/Resources"
+          sed "s/__VERSION__/$version/g" packaging/macos/Info.plist > "$app/Contents/Info.plist"
+          cp "target/${{ matrix.target }}/release/calcbench" "$app/Contents/MacOS/"
+          cp packaging/macos/icon.icns "$app/Contents/Resources/"
+          codesign --force --deep --sign - "$app"
+          ln -s /Applications dmg/Applications
+          name=calcbench-${tag}-${{ matrix.target }}
+          hdiutil create -volname "CalcBench" -srcfolder dmg -fs HFS+ -format UDZO -ov "dist/$name.dmg"
+          (cd dist && shasum -a 256 "$name.dmg" > "$name.dmg.sha256")
+      - name: install wix
+        if: runner.os == 'Windows'
+        run: dotnet tool install --global wix --version 5.0.2
+      - name: msi
+        if: runner.os == 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          version="${tag#v}"
+          name=calcbench-${tag}-${{ matrix.target }}
+          wix build -arch x64 -pdbtype none \
+            -d "Version=$(echo "$version" | sed -E 's/[-+].*$//')" \
+            -d "BinDir=target/${{ matrix.target }}/release" \
+            -o "dist/$name.msi" packaging/windows/calcbench.wxs
+          (cd dist && sha256sum "$name.msi" > "$name.msi.sha256")
+      - uses: actions/upload-artifact@v4
+        with:
+          name: calcbench-${{ matrix.target }}
+          if-no-files-found: error
+          path: |
+            dist/*.tar.gz
+            dist/*.zip
+            dist/*.dmg
+            dist/*.msi
+            dist/*.deb
+            dist/*.sha256
+
+  android:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: aarch64-linux-android
+      - uses: Swatinem/rust-cache@v2
+        with:
+          key: android
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 21
+      - name: SDK, build tools and NDK
+        run: |
+          sdkmanager="$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager"
+          yes | "$sdkmanager" --licenses >/dev/null || true
+          "$sdkmanager" "platforms;android-34" "build-tools;34.0.0" "ndk;28.2.13676358"
+          echo "ANDROID_HOME=$ANDROID_HOME" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_HOME=$ANDROID_HOME/ndk/28.2.13676358" >> "$GITHUB_ENV"
+          echo "ANDROID_NDK_ROOT=$ANDROID_HOME/ndk/28.2.13676358" >> "$GITHUB_ENV"
+      - run: cargo install cargo-ndk --locked
+      - name: Decode signing keystore
+        env:
+          SIGNING_KEYSTORE_BASE64: ${{ secrets.SIGNING_KEYSTORE_BASE64 }}
+        run: |
+          [ -n "$SIGNING_KEYSTORE_BASE64" ] || { echo "SIGNING_KEYSTORE_BASE64 is not set"; exit 1; }
+          echo "$SIGNING_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.keystore"
+      - name: Build and sign
+        env:
+          RELEASE: "1"
+          KEYSTORE_PASS: ${{ secrets.SIGNING_STORE_PASSWORD }}
+          KEY_PASS: ${{ secrets.SIGNING_KEY_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.SIGNING_KEY_ALIAS }}
+        run: |
+          export KEYSTORE="$RUNNER_TEMP/release.keystore"
+          export PATH="$ANDROID_HOME/build-tools/34.0.0:$PATH"
+          ./packaging/android/build.sh
+          tag="${{ github.event.inputs.tag || github.ref_name }}"
+          mkdir -p dist
+          cp target/android/calcbench.apk "dist/calcbench-${tag}-android-arm64.apk"
+          (cd dist && sha256sum "calcbench-${tag}-android-arm64.apk" > "calcbench-${tag}-android-arm64.apk.sha256")
+      - uses: actions/upload-artifact@v4
+        with:
+          name: android-arm64
+          if-no-files-found: error
+          path: dist/*
+
+  release:
+    needs: [build, android]
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Release notes
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          awk -v v="${TAG#v}" '/^## \[/{p=index($0,"[" v "]")>0;next} /^\[[^]]*\]: /{p=0} p' CHANGELOG.md > notes.md
+          grep -q '[^[:space:]]' notes.md || { echo "CHANGELOG.md has no entry for ${TAG#v}"; exit 1; }
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+          merge-multiple: true
+      - name: Source archive
+        run: |
+          name=calcbench-${GITHUB_REF_NAME}-source.tar.gz
+          git ls-files --recurse-submodules -z | tar --null -T - --transform "s,^,calcbench-${GITHUB_REF_NAME}/," -czf "dist/$name"
+          (cd dist && sha256sum "$name" > "$name.sha256")
+      - name: Sums
+        run: (cd dist && sha256sum $(ls | grep -v '\.sha256$') > SHA256SUMS)
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "${GITHUB_REF_NAME}" dist/* --repo "${GITHUB_REPOSITORY}" --title "${GITHUB_REF_NAME}" --notes-file notes.md

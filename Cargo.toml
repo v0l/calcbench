@@ -24,7 +24,7 @@ toml = "1"
 eframe = { version = "0.37", default-features = false, features = ["default_fonts", "wgpu", "wayland", "clipboard", "links", "x11"] }
 
 [target.'cfg(target_os = "android")'.dependencies]
-eframe = { version = "0.37", default-features = false, features = ["default_fonts", "wgpu", "android-native-activity"] }
+eframe = { version = "0.37", default-features = false, features = ["default_fonts", "glow", "android-native-activity"] }
 android-activity = { version = "0.6", features = ["native-activity"] }
 android_logger = "0.14"
 log = "0.4"
@@ -38,3 +38,19 @@ egui_kittest = { version = "0.37", features = ["wgpu", "snapshot"] }
 [profile.release]
 opt-level = 3
 lto = "thin"
+
+[package.metadata.deb]
+name = "calcbench"
+maintainer = "v0l <kieran@harkin.me>"
+copyright = "v0l"
+license-file = ["LICENSE", "0"]
+section = "utils"
+priority = "optional"
+extended-description = "Offline units, constants, formulas and a calculator for builders, with a CLI for agents."
+assets = [
+    ["target/release/calcbench", "usr/bin/", "755"],
+    ["packaging/linux/calcbench.desktop", "usr/share/applications/", "644"],
+    ["assets/icon-512.png", "usr/share/icons/hicolor/512x512/apps/calcbench.png", "644"],
+    ["README.md", "usr/share/doc/calcbench/README.md", "644"],
+    ["skills/calcbench/SKILL.md", "usr/share/doc/calcbench/SKILL.md", "644"],
+]

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Calcbench
+Comment=Units, constants, formulas and a calculator
+Exec=calcbench
+Icon=calcbench
+Categories=Utility;Calculator;Science;
+Terminal=false
+StartupWMClass=calcbench
