@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: "Tag to build, without publishing"
+        description: "Tag to build, publishes nothing"
         required: true
 
 permissions:
