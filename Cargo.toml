@@ -1,0 +1,10 @@
+[package]
+name = "calcbench"
+version = "0.1.0"
+edition = "2024"
+license = "GPL-3.0-only"
+description = "Units, constants, formulas and a calculator for builders"
+repository = "https://github.com/v0l/calcbench"
+
+[dependencies]
+fend-core = "1"
