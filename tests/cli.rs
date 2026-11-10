@@ -70,5 +70,5 @@ fn helpers() {
 #[test]
 fn version_and_help() {
     assert!(run(&["--version"]).1.starts_with("calcbench 0.1.0"));
-    assert!(run(&[]).1.contains("usage:"));
+    assert!(run(&["--help"]).1.contains("usage:"));
 }
