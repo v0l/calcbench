@@ -277,6 +277,23 @@ fn split_conversion(tokens: &[Token]) -> (usize, Option<usize>) {
     (tokens.len(), None)
 }
 
+pub fn fmt_sig(v: f64, digits: usize) -> String {
+    if v == 0.0 || !v.is_finite() {
+        return fmt_number(v);
+    }
+    let exp = v.abs().log10().floor() as i32;
+    if (-3..=9).contains(&exp) {
+        let decimals = (digits as i32 - 1 - exp).max(0) as usize;
+        let s = format!("{v:.decimals$}");
+        if s.contains('.') { s.trim_end_matches('0').trim_end_matches('.').to_string() } else { s }
+    } else {
+        let s = format!("{v:.prec$e}", prec = digits - 1);
+        let (m, e) = s.split_once('e').unwrap();
+        let m = if m.contains('.') { m.trim_end_matches('0').trim_end_matches('.') } else { m };
+        format!("{m}e{e}")
+    }
+}
+
 pub fn fmt_number(v: f64) -> String {
     if v == 0.0 {
         return "0".into();

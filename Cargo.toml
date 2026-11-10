@@ -8,3 +8,5 @@ repository = "https://github.com/v0l/calcbench"
 
 [dependencies]
 fend-core = "1"
+serde = { version = "1", features = ["derive"] }
+toml = "1"
