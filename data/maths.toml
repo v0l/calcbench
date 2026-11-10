@@ -1,0 +1,276 @@
+[[formula]]
+id = "circle"
+name = "Circle area and circumference"
+tags = "geometry circle area"
+equation = "A = pi*r^2"
+source = "standard"
+vars = [
+  { s = "A", n = "area", u = "m^2", x = 78.5 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+]
+
+[[formula]]
+id = "circumference"
+name = "Circle circumference"
+tags = "geometry circle"
+equation = "C = 2*pi*r"
+source = "standard"
+vars = [
+  { s = "C", n = "circumference", u = "m", x = 31.4 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+]
+
+[[formula]]
+id = "sphere-volume"
+name = "Sphere volume"
+tags = "geometry sphere volume"
+equation = "V = 4/3*pi*r^3"
+source = "standard"
+vars = [
+  { s = "V", n = "volume", u = "m^3", x = 523.0 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+]
+
+[[formula]]
+id = "sphere-area"
+name = "Sphere surface area"
+tags = "geometry sphere area"
+equation = "A = 4*pi*r^2"
+source = "standard"
+vars = [
+  { s = "A", n = "area", u = "m^2", x = 314.0 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+]
+
+[[formula]]
+id = "cylinder-volume"
+name = "Cylinder volume"
+tags = "geometry cylinder volume"
+equation = "V = pi*r^2*h"
+source = "standard"
+vars = [
+  { s = "V", n = "volume", u = "m^3", x = 157.0 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+  { s = "h", n = "height", u = "m", x = 2.0 },
+]
+
+[[formula]]
+id = "cone-volume"
+name = "Cone volume"
+tags = "geometry cone volume"
+equation = "V = pi*r^2*h/3"
+source = "standard"
+vars = [
+  { s = "V", n = "volume", u = "m^3", x = 52.0 },
+  { s = "r", n = "radius", u = "m", x = 5.0 },
+  { s = "h", n = "height", u = "m", x = 2.0 },
+]
+
+[[formula]]
+id = "triangle-area"
+name = "Triangle area"
+tags = "geometry triangle area"
+equation = "A = 0.5*b*h"
+source = "standard"
+vars = [
+  { s = "A", n = "area", u = "m^2", x = 6.0 },
+  { s = "b", n = "base", u = "m", x = 4.0 },
+  { s = "h", n = "height", u = "m", x = 3.0 },
+]
+
+[[formula]]
+id = "heron"
+name = "Triangle area from three sides"
+tags = "geometry triangle heron"
+equation = "A = sqrt((a + b + c)/2*((a + b + c)/2 - a)*((a + b + c)/2 - b)*((a + b + c)/2 - c))"
+source = "Heron"
+vars = [
+  { s = "A", n = "area", u = "m^2", x = 14.696938456699069 },
+  { s = "a", n = "side a", u = "m", x = 5.0 },
+  { s = "b", n = "side b", u = "m", x = 6.0 },
+  { s = "c", n = "side c", u = "m", x = 7.0 },
+]
+
+[[formula]]
+id = "pythagoras"
+name = "Pythagorean theorem"
+tags = "geometry triangle trigonometry right"
+equation = "c^2 = a^2 + b^2"
+source = "standard"
+vars = [
+  { s = "c", n = "hypotenuse", x = 5.0 },
+  { s = "a", n = "side a", x = 3.0 },
+  { s = "b", n = "side b", x = 4.0 },
+]
+
+[[formula]]
+id = "right-triangle-sine"
+name = "Right triangle sine"
+tags = "trigonometry sine triangle"
+equation = "sin(theta) = opp/hyp"
+notes = "theta is in radians."
+source = "standard"
+vars = [
+  { s = "theta", n = "angle in rad", x = 0.6435011087932844, min = 0.0, max = 1.5707963267948966 },
+  { s = "opp", n = "opposite side", x = 3.0 },
+  { s = "hyp", n = "hypotenuse", x = 5.0 },
+]
+
+[[formula]]
+id = "law-of-cosines"
+name = "Law of cosines"
+tags = "trigonometry triangle cosine"
+equation = "c^2 = a^2 + b^2 - 2*a*b*cos(gamma)"
+notes = "gamma is in radians."
+source = "standard"
+vars = [
+  { s = "c", n = "side c", x = 5.0 },
+  { s = "a", n = "side a", x = 3.0 },
+  { s = "b", n = "side b", x = 4.0 },
+  { s = "gamma", n = "angle opposite c in rad", x = 1.5707963267948966, min = 0.0, max = 3.141592653589793 },
+]
+
+[[formula]]
+id = "law-of-sines"
+name = "Law of sines"
+tags = "trigonometry triangle sine"
+equation = "a/sin(A) = b/sin(B)"
+notes = "Angles in radians."
+source = "standard"
+vars = [
+  { s = "a", n = "side a", x = 3.0 },
+  { s = "A", n = "angle A in rad", x = 0.6435, min = 0.0, max = 1.5707963267948966 },
+  { s = "b", n = "side b", x = 4.0 },
+  { s = "B", n = "angle B in rad", x = 0.9273, min = 0.0, max = 1.5707963267948966 },
+]
+
+[[formula]]
+id = "quadratic"
+name = "Quadratic equation"
+tags = "algebra quadratic roots polynomial"
+equation = "a*x^2 + b*x + c = 0"
+notes = "Solving for x returns the root closest to the example value. Solving for a, b or c needs x."
+source = "standard"
+vars = [
+  { s = "x", n = "root", x = 2.0, signed = true },
+  { s = "a", n = "a", x = 1.0, signed = true },
+  { s = "b", n = "b", x = -5.0, signed = true },
+  { s = "c", n = "c", x = 6.0, signed = true },
+]
+
+[[formula]]
+id = "cubic"
+name = "Cubic equation"
+tags = "algebra cubic roots polynomial"
+equation = "a*x^3 + b*x^2 + c*x + d = 0"
+notes = "Returns the root closest to the example value."
+source = "standard"
+vars = [
+  { s = "x", n = "root", x = 2.0, signed = true },
+  { s = "a", n = "a", x = 1.0, signed = true },
+  { s = "b", n = "b", x = -6.0, signed = true },
+  { s = "c", n = "c", x = 11.0, signed = true },
+  { s = "d", n = "d", x = -6.0, signed = true },
+]
+
+[[formula]]
+id = "compound-interest"
+name = "Compound interest"
+tags = "finance interest compound savings"
+equation = "FV = PV*(1 + r/n)^(n*t)"
+source = "standard"
+vars = [
+  { s = "FV", n = "future value", x = 1647.0 },
+  { s = "PV", n = "present value", x = 1000.0 },
+  { s = "r", n = "annual rate", x = 0.05, signed = true },
+  { s = "n", n = "periods per year", x = 12.0 },
+  { s = "t", n = "years", x = 10.0, signed = true },
+]
+
+[[formula]]
+id = "loan-payment"
+name = "Loan payment"
+tags = "finance loan mortgage payment"
+equation = "P = L*i/(1 - (1 + i)^(-n))"
+notes = "i is the rate per period, n the number of payments."
+source = "standard"
+vars = [
+  { s = "P", n = "payment", x = 530.0 },
+  { s = "L", n = "loan amount", x = 100000.0 },
+  { s = "i", n = "rate per period", x = 0.005 },
+  { s = "n", n = "number of payments", x = 240.0 },
+]
+
+[[formula]]
+id = "mean-of-three"
+name = "Mean of three values"
+tags = "statistics mean average"
+equation = "m = (x1 + x2 + x3)/3"
+source = "standard"
+vars = [
+  { s = "m", n = "mean", x = 2.0, signed = true },
+  { s = "x1", n = "first value", x = 1.0, signed = true },
+  { s = "x2", n = "second value", x = 2.0, signed = true },
+  { s = "x3", n = "third value", x = 3.0, signed = true },
+]
+
+[[formula]]
+id = "z-score"
+name = "Z score"
+tags = "statistics normal distribution standard score"
+equation = "z = (x - mu)/sigma"
+source = "standard"
+vars = [
+  { s = "z", n = "z score", x = 1.0, signed = true },
+  { s = "x", n = "value", x = 110.0, signed = true },
+  { s = "mu", n = "mean", x = 100.0, signed = true },
+  { s = "sigma", n = "standard deviation", x = 10.0 },
+]
+
+[[formula]]
+id = "normal-cdf"
+name = "Normal distribution cumulative probability"
+tags = "statistics normal distribution probability cdf"
+equation = "p = normcdf((x - mu)/sigma)"
+source = "standard"
+vars = [
+  { s = "p", n = "probability", x = 0.84, min = 0.0, max = 1.0 },
+  { s = "x", n = "value", x = 110.0, signed = true },
+  { s = "mu", n = "mean", x = 100.0, signed = true },
+  { s = "sigma", n = "standard deviation", x = 10.0 },
+]
+
+[[formula]]
+id = "student-t-cdf"
+name = "Student t cumulative probability"
+tags = "statistics t distribution probability cdf"
+equation = "p = tcdf(t, nu)"
+source = "standard"
+vars = [
+  { s = "p", n = "probability", x = 0.97, min = 0.0, max = 1.0 },
+  { s = "t", n = "t value", x = 2.0, signed = true },
+  { s = "nu", n = "degrees of freedom", x = 10.0, min = 0.5, max = 1000.0 },
+]
+
+[[formula]]
+id = "standard-error"
+name = "Standard error of the mean"
+tags = "statistics standard error sample"
+equation = "se = s/sqrt(n)"
+source = "standard"
+vars = [
+  { s = "se", n = "standard error", x = 2.0 },
+  { s = "s", n = "sample standard deviation", x = 10.0 },
+  { s = "n", n = "sample size", x = 25.0 },
+]
+
+[[formula]]
+id = "rule-of-72"
+name = "Doubling time"
+tags = "finance doubling growth"
+equation = "t = ln(2)/ln(1 + r)"
+source = "standard"
+vars = [
+  { s = "t", n = "years to double", x = 14.2 },
+  { s = "r", n = "annual growth", x = 0.05 },
+]

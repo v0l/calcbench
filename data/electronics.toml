@@ -1,0 +1,882 @@
+[[formula]]
+id = "ohm"
+name = "Ohm's law"
+tags = "voltage current resistance"
+equation = "V = I*R"
+notes = "Voltage across a resistor carrying a current."
+source = "standard"
+vars = [
+  { s = "V", n = "voltage", u = "V", x = 12.0 },
+  { s = "I", n = "current", u = "A", x = 0.0255 },
+  { s = "R", n = "resistance", u = "ohm", x = 470.0 },
+]
+
+[[formula]]
+id = "power-vi"
+name = "Electrical power from voltage and current"
+tags = "watts power"
+equation = "P = V*I"
+source = "standard"
+vars = [
+  { s = "P", n = "power", u = "W", x = 0.3 },
+  { s = "V", n = "voltage", u = "V", x = 12.0 },
+  { s = "I", n = "current", u = "A", x = 0.025 },
+]
+
+[[formula]]
+id = "power-ir"
+name = "Power from current and resistance"
+tags = "watts power dissipation resistor"
+equation = "P = I^2*R"
+source = "standard"
+vars = [
+  { s = "P", n = "power", u = "W", x = 0.25 },
+  { s = "I", n = "current", u = "A", x = 0.02 },
+  { s = "R", n = "resistance", u = "ohm", x = 470.0 },
+]
+
+[[formula]]
+id = "power-vr"
+name = "Power from voltage and resistance"
+tags = "watts power dissipation resistor"
+equation = "P = V^2/R"
+source = "standard"
+vars = [
+  { s = "P", n = "power", u = "W", x = 0.3 },
+  { s = "V", n = "voltage", u = "V", x = 12.0 },
+  { s = "R", n = "resistance", u = "ohm", x = 470.0 },
+]
+
+[[formula]]
+id = "resistors-series"
+name = "Resistors in series"
+tags = "series resistance"
+equation = "Rt = R1 + R2 + R3"
+source = "standard"
+vars = [
+  { s = "Rt", n = "total resistance", u = "ohm", x = 3300.0 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 1000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 1000.0 },
+  { s = "R3", n = "third resistor", u = "ohm", x = 1300.0 },
+]
+
+[[formula]]
+id = "resistors-parallel"
+name = "Resistors in parallel"
+tags = "parallel resistance"
+equation = "1/Rt = 1/R1 + 1/R2 + 1/R3"
+source = "standard"
+vars = [
+  { s = "Rt", n = "total resistance", u = "ohm", x = 300.0 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 1000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 1000.0 },
+  { s = "R3", n = "third resistor", u = "ohm", x = 1000.0 },
+]
+
+[[formula]]
+id = "resistors-parallel-2"
+name = "Two resistors in parallel"
+tags = "parallel resistance"
+equation = "Rt = R1*R2/(R1 + R2)"
+source = "standard"
+vars = [
+  { s = "Rt", n = "total resistance", u = "ohm", x = 500.0 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 1000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 1000.0 },
+]
+
+[[formula]]
+id = "capacitors-parallel"
+name = "Capacitors in parallel"
+tags = "parallel capacitance"
+equation = "Ct = C1 + C2 + C3"
+source = "standard"
+vars = [
+  { s = "Ct", n = "total capacitance", u = "F", x = 3e-6 },
+  { s = "C1", n = "first capacitor", u = "F", x = 1e-6 },
+  { s = "C2", n = "second capacitor", u = "F", x = 1e-6 },
+  { s = "C3", n = "third capacitor", u = "F", x = 1e-6 },
+]
+
+[[formula]]
+id = "capacitors-series"
+name = "Capacitors in series"
+tags = "series capacitance"
+equation = "1/Ct = 1/C1 + 1/C2 + 1/C3"
+source = "standard"
+vars = [
+  { s = "Ct", n = "total capacitance", u = "F", x = 3e-7 },
+  { s = "C1", n = "first capacitor", u = "F", x = 1e-6 },
+  { s = "C2", n = "second capacitor", u = "F", x = 1e-6 },
+  { s = "C3", n = "third capacitor", u = "F", x = 1e-6 },
+]
+
+[[formula]]
+id = "inductors-series"
+name = "Inductors in series"
+tags = "series inductance"
+equation = "Lt = L1 + L2 + L3"
+source = "standard, no mutual coupling"
+vars = [
+  { s = "Lt", n = "total inductance", u = "H", x = 3e-3 },
+  { s = "L1", n = "first inductor", u = "H", x = 1e-3 },
+  { s = "L2", n = "second inductor", u = "H", x = 1e-3 },
+  { s = "L3", n = "third inductor", u = "H", x = 1e-3 },
+]
+
+[[formula]]
+id = "inductors-parallel"
+name = "Inductors in parallel"
+tags = "parallel inductance"
+equation = "1/Lt = 1/L1 + 1/L2 + 1/L3"
+source = "standard, no mutual coupling"
+vars = [
+  { s = "Lt", n = "total inductance", u = "H", x = 3e-4 },
+  { s = "L1", n = "first inductor", u = "H", x = 1e-3 },
+  { s = "L2", n = "second inductor", u = "H", x = 1e-3 },
+  { s = "L3", n = "third inductor", u = "H", x = 1e-3 },
+]
+
+[[formula]]
+id = "voltage-divider"
+name = "Voltage divider"
+tags = "divider resistor e-series"
+equation = "Vout = Vin*R2/(R1 + R2)"
+notes = "R1 is the top resistor, R2 the bottom one. calcbench eseries finds the nearest standard pair."
+source = "standard"
+vars = [
+  { s = "Vout", n = "output voltage", u = "V", x = 3.3 },
+  { s = "Vin", n = "input voltage", u = "V", x = 5.0 },
+  { s = "R1", n = "top resistor", u = "ohm", x = 10000.0 },
+  { s = "R2", n = "bottom resistor", u = "ohm", x = 20000.0 },
+]
+
+[[formula]]
+id = "current-divider"
+name = "Current divider"
+tags = "divider current"
+equation = "I1 = It*R2/(R1 + R2)"
+source = "standard"
+vars = [
+  { s = "I1", n = "current in R1", u = "A", x = 0.01 },
+  { s = "It", n = "total current", u = "A", x = 0.03 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 2000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 1000.0 },
+]
+
+[[formula]]
+id = "rc-time-constant"
+name = "RC time constant"
+tags = "tau rc timing"
+equation = "tau = R*C"
+source = "standard"
+vars = [
+  { s = "tau", n = "time constant", u = "s", x = 0.001 },
+  { s = "R", n = "resistance", u = "ohm", x = 10000.0 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-7 },
+]
+
+[[formula]]
+id = "rc-charge"
+name = "RC charging voltage"
+tags = "rc charge capacitor"
+equation = "Vc = Vs*(1 - exp(-t/(R*C)))"
+source = "standard"
+vars = [
+  { s = "Vc", n = "capacitor voltage", u = "V", x = 3.16 },
+  { s = "Vs", n = "supply voltage", u = "V", x = 5.0 },
+  { s = "t", n = "time", u = "s", x = 0.001 },
+  { s = "R", n = "resistance", u = "ohm", x = 10000.0 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-7 },
+]
+
+[[formula]]
+id = "rl-time-constant"
+name = "RL time constant"
+tags = "tau rl inductor"
+equation = "tau = L/R"
+source = "standard"
+vars = [
+  { s = "tau", n = "time constant", u = "s", x = 0.001 },
+  { s = "L", n = "inductance", u = "H", x = 0.01 },
+  { s = "R", n = "resistance", u = "ohm", x = 10.0 },
+]
+
+[[formula]]
+id = "rl-current"
+name = "RL rising current"
+tags = "rl inductor current"
+equation = "I = Vs/R*(1 - exp(-R*t/L))"
+source = "standard"
+vars = [
+  { s = "I", n = "current", u = "A", x = 0.06 },
+  { s = "Vs", n = "supply voltage", u = "V", x = 12.0 },
+  { s = "R", n = "resistance", u = "ohm", x = 100.0 },
+  { s = "L", n = "inductance", u = "H", x = 0.1 },
+  { s = "t", n = "time", u = "s", x = 0.001 },
+]
+
+[[formula]]
+id = "lc-resonance"
+name = "LC resonant frequency"
+tags = "resonance tank lc"
+equation = "f = 1/(2*pi*sqrt(L*C))"
+source = "standard"
+vars = [
+  { s = "f", n = "resonant frequency", u = "Hz", x = 10000.0 },
+  { s = "L", n = "inductance", u = "H", x = 1e-3 },
+  { s = "C", n = "capacitance", u = "F", x = 2.5e-7 },
+]
+
+[[formula]]
+id = "capacitive-reactance"
+name = "Capacitive reactance"
+tags = "reactance capacitor impedance"
+equation = "Xc = 1/(2*pi*f*C)"
+source = "standard"
+vars = [
+  { s = "Xc", n = "reactance", u = "ohm", x = 1000.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 1000.0 },
+  { s = "C", n = "capacitance", u = "F", x = 1.6e-7 },
+]
+
+[[formula]]
+id = "inductive-reactance"
+name = "Inductive reactance"
+tags = "reactance inductor impedance"
+equation = "Xl = 2*pi*f*L"
+source = "standard"
+vars = [
+  { s = "Xl", n = "reactance", u = "ohm", x = 1000.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 10000.0 },
+  { s = "L", n = "inductance", u = "H", x = 0.016 },
+]
+
+[[formula]]
+id = "series-rlc-impedance"
+name = "Series RLC impedance magnitude"
+tags = "impedance rlc reactance"
+equation = "Z = sqrt(R^2 + (2*pi*f*L - 1/(2*pi*f*C))^2)"
+source = "standard"
+vars = [
+  { s = "Z", n = "impedance", u = "ohm", x = 100.0 },
+  { s = "R", n = "resistance", u = "ohm", x = 100.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 1000.0 },
+  { s = "L", n = "inductance", u = "H", x = 0.01 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-6 },
+]
+
+[[formula]]
+id = "rc-cutoff"
+name = "RC filter cut-off"
+tags = "filter lowpass highpass rc cutoff"
+equation = "fc = 1/(2*pi*R*C)"
+source = "standard"
+vars = [
+  { s = "fc", n = "cut-off frequency", u = "Hz", x = 1591.5 },
+  { s = "R", n = "resistance", u = "ohm", x = 1000.0 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-7 },
+]
+
+[[formula]]
+id = "rl-cutoff"
+name = "RL filter cut-off"
+tags = "filter rl cutoff"
+equation = "fc = R/(2*pi*L)"
+source = "standard"
+vars = [
+  { s = "fc", n = "cut-off frequency", u = "Hz", x = 1591.5 },
+  { s = "R", n = "resistance", u = "ohm", x = 1000.0 },
+  { s = "L", n = "inductance", u = "H", x = 0.1 },
+]
+
+[[formula]]
+id = "lc-filter-cutoff"
+name = "LC filter cut-off"
+tags = "filter lc cutoff lowpass"
+equation = "fc = 1/(2*pi*sqrt(L*C))"
+source = "standard"
+vars = [
+  { s = "fc", n = "cut-off frequency", u = "Hz", x = 5000.0 },
+  { s = "L", n = "inductance", u = "H", x = 1e-3 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-6 },
+]
+
+[[formula]]
+id = "sallen-key-cutoff"
+name = "Sallen-Key low-pass cut-off"
+tags = "filter sallen key active opamp"
+equation = "fc = 1/(2*pi*sqrt(R1*R2*C1*C2))"
+notes = "Unity gain two-pole low-pass."
+source = "standard"
+vars = [
+  { s = "fc", n = "cut-off frequency", u = "Hz", x = 1000.0 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 10000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 10000.0 },
+  { s = "C1", n = "feedback capacitor", u = "F", x = 2.2e-8 },
+  { s = "C2", n = "ground capacitor", u = "F", x = 1e-8 },
+]
+
+[[formula]]
+id = "sallen-key-q"
+name = "Sallen-Key low-pass Q"
+tags = "filter sallen key q"
+equation = "Q = sqrt(R1*R2*C1*C2)/(C2*(R1 + R2))"
+notes = "Unity gain two-pole low-pass. C1 goes to the output, C2 to ground."
+source = "standard"
+vars = [
+  { s = "Q", n = "quality factor", x = 0.7 },
+  { s = "R1", n = "first resistor", u = "ohm", x = 10000.0 },
+  { s = "R2", n = "second resistor", u = "ohm", x = 10000.0 },
+  { s = "C1", n = "feedback capacitor", u = "F", x = 2.2e-8 },
+  { s = "C2", n = "ground capacitor", u = "F", x = 1e-8 },
+]
+
+[[formula]]
+id = "series-q"
+name = "Series resonant Q"
+tags = "q factor resonance bandwidth"
+equation = "Q = sqrt(L/C)/R"
+source = "standard"
+vars = [
+  { s = "Q", n = "quality factor", x = 10.0 },
+  { s = "L", n = "inductance", u = "H", x = 1e-3 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-7 },
+  { s = "R", n = "series resistance", u = "ohm", x = 10.0 },
+]
+
+[[formula]]
+id = "bandwidth-q"
+name = "Bandwidth from Q"
+tags = "q factor bandwidth"
+equation = "BW = f0/Q"
+source = "standard"
+vars = [
+  { s = "BW", n = "bandwidth", u = "Hz", x = 1000.0 },
+  { s = "f0", n = "centre frequency", u = "Hz", x = 10000.0 },
+  { s = "Q", n = "quality factor", x = 10.0 },
+]
+
+[[formula]]
+id = "led-resistor"
+name = "LED series resistor"
+tags = "led resistor current limit"
+equation = "R = (Vs - Vf)/If"
+source = "standard"
+vars = [
+  { s = "R", n = "resistor", u = "ohm", x = 330.0 },
+  { s = "Vs", n = "supply voltage", u = "V", x = 5.0 },
+  { s = "Vf", n = "LED forward voltage", u = "V", x = 2.0 },
+  { s = "If", n = "LED current", u = "A", x = 0.01 },
+]
+
+[[formula]]
+id = "opamp-inverting"
+name = "Inverting op-amp gain"
+tags = "opamp amplifier gain inverting"
+equation = "G = -Rf/Rin"
+source = "ideal op-amp"
+vars = [
+  { s = "G", n = "gain", x = -10.0, signed = true },
+  { s = "Rf", n = "feedback resistor", u = "ohm", x = 100000.0 },
+  { s = "Rin", n = "input resistor", u = "ohm", x = 10000.0 },
+]
+
+[[formula]]
+id = "opamp-noninverting"
+name = "Non-inverting op-amp gain"
+tags = "opamp amplifier gain"
+equation = "G = 1 + Rf/Rg"
+source = "ideal op-amp"
+vars = [
+  { s = "G", n = "gain", x = 11.0 },
+  { s = "Rf", n = "feedback resistor", u = "ohm", x = 100000.0 },
+  { s = "Rg", n = "ground resistor", u = "ohm", x = 10000.0 },
+]
+
+[[formula]]
+id = "opamp-difference"
+name = "Difference amplifier"
+tags = "opamp amplifier differential"
+equation = "Vout = R2/R1*(V2 - V1)"
+notes = "Matched resistor pairs."
+source = "ideal op-amp"
+vars = [
+  { s = "Vout", n = "output voltage", u = "V", x = 1.0, signed = true },
+  { s = "R1", n = "input resistor", u = "ohm", x = 10000.0 },
+  { s = "R2", n = "feedback resistor", u = "ohm", x = 100000.0 },
+  { s = "V1", n = "inverting input", u = "V", x = 0.1, signed = true },
+  { s = "V2", n = "non-inverting input", u = "V", x = 0.2, signed = true },
+]
+
+[[formula]]
+id = "ne555-astable-frequency"
+name = "555 astable frequency"
+tags = "555 timer oscillator"
+equation = "f = 1.44/((R1 + 2*R2)*C)"
+source = "NE555 datasheet"
+vars = [
+  { s = "f", n = "frequency", u = "Hz", x = 1000.0 },
+  { s = "R1", n = "resistor 1", u = "ohm", x = 1000.0 },
+  { s = "R2", n = "resistor 2", u = "ohm", x = 10000.0 },
+  { s = "C", n = "timing capacitor", u = "F", x = 7e-8 },
+]
+
+[[formula]]
+id = "ne555-astable-duty"
+name = "555 astable duty cycle"
+tags = "555 timer duty"
+equation = "D = (R1 + R2)/(R1 + 2*R2)"
+source = "NE555 datasheet"
+vars = [
+  { s = "D", n = "duty cycle", x = 0.55, min = 0.5, max = 1.0 },
+  { s = "R1", n = "resistor 1", u = "ohm", x = 1000.0 },
+  { s = "R2", n = "resistor 2", u = "ohm", x = 10000.0 },
+]
+
+[[formula]]
+id = "ne555-monostable"
+name = "555 monostable pulse"
+tags = "555 timer one shot"
+equation = "t = 1.1*R*C"
+source = "NE555 datasheet"
+vars = [
+  { s = "t", n = "pulse width", u = "s", x = 0.01 },
+  { s = "R", n = "resistor", u = "ohm", x = 10000.0 },
+  { s = "C", n = "capacitor", u = "F", x = 1e-6 },
+]
+
+[[formula]]
+id = "battery-life"
+name = "Battery life"
+tags = "battery runtime capacity"
+equation = "t = Cap*eta/I"
+notes = "Capacity in ampere-hours, current in amperes, time in hours. Use 0.8 for a typical usable fraction."
+source = "standard"
+vars = [
+  { s = "t", n = "runtime", u = "h", x = 20.0 },
+  { s = "Cap", n = "capacity", u = "A h", x = 2.5 },
+  { s = "eta", n = "usable fraction", x = 0.8, min = 0.0, max = 1.0 },
+  { s = "I", n = "load current", u = "A", x = 0.1 },
+]
+
+[[formula]]
+id = "wire-resistance"
+name = "Wire resistance"
+tags = "wire gauge resistance conductor"
+equation = "R = rho*L/A"
+notes = "Copper rho is 1.68e-8 ohm m at 20 C."
+source = "standard"
+vars = [
+  { s = "R", n = "resistance", u = "ohm", x = 0.1 },
+  { s = "rho", n = "resistivity", u = "ohm m", x = 1.68e-8 },
+  { s = "L", n = "length", u = "m", x = 10.0 },
+  { s = "A", n = "cross section", u = "m^2", x = 1.0e-6 },
+]
+
+[[formula]]
+id = "awg-diameter"
+name = "AWG wire diameter"
+tags = "wire gauge awg diameter"
+equation = "d = 0.000127*92^((36 - n)/39)"
+notes = "Diameter in metres for American Wire Gauge number n."
+source = "ASTM B258"
+vars = [
+  { s = "d", n = "diameter", u = "m", x = 0.001 },
+  { s = "n", n = "AWG number", x = 18.0, signed = true },
+]
+
+[[formula]]
+id = "voltage-drop"
+name = "Wire voltage drop"
+tags = "wire gauge voltage drop cable"
+equation = "Vd = 2*I*rho*L/A"
+notes = "Out and back, L is the one-way run."
+source = "standard"
+vars = [
+  { s = "Vd", n = "voltage drop", u = "V", x = 0.3 },
+  { s = "I", n = "current", u = "A", x = 10.0 },
+  { s = "rho", n = "resistivity", u = "ohm m", x = 1.68e-8 },
+  { s = "L", n = "one-way length", u = "m", x = 5.0 },
+  { s = "A", n = "cross section", u = "m^2", x = 2.5e-6 },
+]
+
+[[formula]]
+id = "wire-ampacity"
+name = "Wire ampacity rule of thumb"
+tags = "wire gauge ampacity current copper"
+equation = "I = J*A"
+notes = "Conservative chassis wiring: about 2.8 A per square millimetre of copper. A is in square millimetres. Check the insulation rating and bundling before relying on it."
+source = "700 circular mils per ampere rule"
+vars = [
+  { s = "I", n = "current", u = "A", x = 7.0 },
+  { s = "J", n = "current density", x = 2.8 },
+  { s = "A", n = "cross section in mm^2", x = 2.5 },
+]
+
+[[formula]]
+id = "ipc2221-current"
+name = "PCB trace current (IPC-2221)"
+tags = "pcb trace width current ipc"
+equation = "I = k*dT^0.44*A^0.725"
+notes = "A is the cross section in square mils. k is 0.048 for outer layers and 0.024 for inner layers. Valid to about 35 A, 10 to 100 C rise."
+source = "IPC-2221"
+vars = [
+  { s = "I", n = "current", u = "A", x = 1.0 },
+  { s = "k", n = "layer constant", x = 0.048 },
+  { s = "dT", n = "temperature rise in K", x = 10.0 },
+  { s = "A", n = "cross section in mil^2", x = 15.0 },
+]
+
+[[formula]]
+id = "ipc2221-width"
+name = "PCB trace width from cross section"
+tags = "pcb trace width ipc copper"
+equation = "W = A/(oz*1.378)"
+notes = "W in mils, A in square mils, oz is the copper weight (1 oz is 1.378 mil thick)."
+source = "IPC-2221"
+vars = [
+  { s = "W", n = "trace width in mil", x = 10.9 },
+  { s = "A", n = "cross section in mil^2", x = 15.0 },
+  { s = "oz", n = "copper weight in oz", x = 1.0 },
+]
+
+[[formula]]
+id = "microstrip-impedance"
+name = "Microstrip impedance"
+tags = "transmission line microstrip pcb impedance"
+equation = "Z0 = 87/sqrt(er + 1.41)*ln(5.98*h/(0.8*w + t))"
+notes = "Valid for 0.1 < w/h < 2 and er below 15. w, h and t share any length unit."
+source = "IPC-2141"
+vars = [
+  { s = "Z0", n = "impedance", u = "ohm", x = 50.0 },
+  { s = "er", n = "relative permittivity", x = 4.4 },
+  { s = "h", n = "dielectric height", x = 0.2 },
+  { s = "w", n = "trace width", x = 0.35 },
+  { s = "t", n = "copper thickness", x = 0.035 },
+]
+
+[[formula]]
+id = "stripline-impedance"
+name = "Stripline impedance"
+tags = "transmission line stripline pcb impedance"
+equation = "Z0 = 60/sqrt(er)*ln(4*b/(0.67*pi*(0.8*w + t)))"
+notes = "b is the plane to plane spacing. Valid for w/b below 0.35."
+source = "IPC-2141"
+vars = [
+  { s = "Z0", n = "impedance", u = "ohm", x = 50.0 },
+  { s = "er", n = "relative permittivity", x = 4.4 },
+  { s = "b", n = "plane spacing", x = 0.5 },
+  { s = "w", n = "trace width", x = 0.1 },
+  { s = "t", n = "copper thickness", x = 0.035 },
+]
+
+[[formula]]
+id = "coax-impedance"
+name = "Coaxial cable impedance"
+tags = "transmission line coax impedance"
+equation = "Z0 = 138/sqrt(er)*log10(D/d)"
+source = "standard"
+vars = [
+  { s = "Z0", n = "impedance", u = "ohm", x = 50.0 },
+  { s = "er", n = "dielectric constant", x = 2.25 },
+  { s = "D", n = "shield inner diameter", x = 4.0 },
+  { s = "d", n = "centre conductor diameter", x = 1.0 },
+]
+
+[[formula]]
+id = "reflection-coefficient"
+name = "Reflection coefficient"
+tags = "vswr mismatch reflection load"
+equation = "gamma = (ZL - Z0)/(ZL + Z0)"
+source = "standard"
+vars = [
+  { s = "gamma", n = "reflection coefficient", x = 0.2, signed = true, min = -1.0, max = 1.0 },
+  { s = "ZL", n = "load impedance", u = "ohm", x = 75.0 },
+  { s = "Z0", n = "line impedance", u = "ohm", x = 50.0 },
+]
+
+[[formula]]
+id = "vswr"
+name = "VSWR"
+tags = "vswr swr mismatch"
+equation = "vswr = (1 + g)/(1 - g)"
+notes = "g is the magnitude of the reflection coefficient."
+source = "standard"
+vars = [
+  { s = "vswr", n = "voltage standing wave ratio", x = 1.5 },
+  { s = "g", n = "reflection magnitude", x = 0.2, min = 0.0, max = 0.999999 },
+]
+
+[[formula]]
+id = "return-loss"
+name = "Return loss"
+tags = "return loss mismatch"
+equation = "RL = -20*log10(g)"
+source = "standard"
+vars = [
+  { s = "RL", n = "return loss in dB", x = 14.0 },
+  { s = "g", n = "reflection magnitude", x = 0.2, min = 0.0, max = 1.0 },
+]
+
+[[formula]]
+id = "mismatch-loss"
+name = "Mismatch loss"
+tags = "mismatch loss vswr"
+equation = "ML = -10*log10(1 - g^2)"
+source = "standard"
+vars = [
+  { s = "ML", n = "mismatch loss in dB", x = 0.18 },
+  { s = "g", n = "reflection magnitude", x = 0.2, min = 0.0, max = 0.999999 },
+]
+
+[[formula]]
+id = "db-power"
+name = "Decibels from a power ratio"
+tags = "db decibel gain power"
+equation = "dB = 10*log10(P2/P1)"
+source = "standard"
+vars = [
+  { s = "dB", n = "gain in dB", x = 3.0, signed = true },
+  { s = "P1", n = "reference power", u = "W", x = 1.0 },
+  { s = "P2", n = "power", u = "W", x = 2.0 },
+]
+
+[[formula]]
+id = "db-voltage"
+name = "Decibels from a voltage ratio"
+tags = "db decibel gain voltage"
+equation = "dB = 20*log10(V2/V1)"
+source = "standard"
+vars = [
+  { s = "dB", n = "gain in dB", x = 6.0, signed = true },
+  { s = "V1", n = "reference voltage", u = "V", x = 1.0 },
+  { s = "V2", n = "voltage", u = "V", x = 2.0 },
+]
+
+[[formula]]
+id = "dbm-power"
+name = "dBm from power"
+tags = "dbm decibel power milliwatt"
+equation = "dBm = 10*log10(P/0.001)"
+source = "standard"
+vars = [
+  { s = "dBm", n = "level in dBm", x = 0.0, signed = true },
+  { s = "P", n = "power", u = "W", x = 0.001 },
+]
+
+[[formula]]
+id = "adc-lsb"
+name = "ADC resolution"
+tags = "adc lsb bits resolution"
+equation = "LSB = Vref/2^N"
+source = "standard"
+vars = [
+  { s = "LSB", n = "step size", u = "V", x = 0.0008 },
+  { s = "Vref", n = "reference voltage", u = "V", x = 3.3 },
+  { s = "N", n = "bits", x = 12.0 },
+]
+
+[[formula]]
+id = "adc-snr"
+name = "Ideal ADC signal to noise"
+tags = "adc snr bits enob"
+equation = "SNR = 6.02*N + 1.76"
+source = "standard"
+vars = [
+  { s = "SNR", n = "SNR in dB", x = 74.0 },
+  { s = "N", n = "bits", x = 12.0, signed = true },
+]
+
+[[formula]]
+id = "capacitor-energy"
+name = "Energy in a capacitor"
+tags = "energy capacitor"
+equation = "E = 0.5*C*V^2"
+source = "standard"
+vars = [
+  { s = "E", n = "energy", u = "J", x = 0.001 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-4 },
+  { s = "V", n = "voltage", u = "V", x = 4.5 },
+]
+
+[[formula]]
+id = "inductor-energy"
+name = "Energy in an inductor"
+tags = "energy inductor"
+equation = "E = 0.5*L*I^2"
+source = "standard"
+vars = [
+  { s = "E", n = "energy", u = "J", x = 0.0005 },
+  { s = "L", n = "inductance", u = "H", x = 0.001 },
+  { s = "I", n = "current", u = "A", x = 1.0 },
+]
+
+[[formula]]
+id = "capacitor-current"
+name = "Capacitor current"
+tags = "capacitor current slew"
+equation = "I = C*dVdt"
+source = "standard"
+vars = [
+  { s = "I", n = "current", u = "A", x = 0.01 },
+  { s = "C", n = "capacitance", u = "F", x = 1e-5 },
+  { s = "dVdt", n = "voltage slew in V/s", x = 1000.0, signed = true },
+]
+
+[[formula]]
+id = "transformer-ratio"
+name = "Transformer turns ratio"
+tags = "transformer turns"
+equation = "Vs/Vp = Ns/Np"
+source = "ideal transformer"
+vars = [
+  { s = "Vs", n = "secondary voltage", u = "V", x = 12.0 },
+  { s = "Vp", n = "primary voltage", u = "V", x = 230.0 },
+  { s = "Ns", n = "secondary turns", x = 52.0 },
+  { s = "Np", n = "primary turns", x = 1000.0 },
+]
+
+[[formula]]
+id = "buck-duty"
+name = "Buck converter duty cycle"
+tags = "buck converter smps duty"
+equation = "Vout = D*Vin"
+notes = "Continuous conduction, ideal switch."
+source = "standard"
+vars = [
+  { s = "Vout", n = "output voltage", u = "V", x = 5.0 },
+  { s = "D", n = "duty cycle", x = 0.4, min = 0.0, max = 1.0 },
+  { s = "Vin", n = "input voltage", u = "V", x = 12.0 },
+]
+
+[[formula]]
+id = "boost-duty"
+name = "Boost converter duty cycle"
+tags = "boost converter smps duty"
+equation = "Vout = Vin/(1 - D)"
+notes = "Continuous conduction, ideal switch."
+source = "standard"
+vars = [
+  { s = "Vout", n = "output voltage", u = "V", x = 12.0 },
+  { s = "D", n = "duty cycle", x = 0.58, min = 0.0, max = 0.999 },
+  { s = "Vin", n = "input voltage", u = "V", x = 5.0 },
+]
+
+[[formula]]
+id = "buck-ripple"
+name = "Buck inductor ripple current"
+tags = "buck converter inductor ripple"
+equation = "dI = (Vin - Vout)*Vout/(Vin*f*L)"
+source = "standard"
+vars = [
+  { s = "dI", n = "ripple current", u = "A", x = 0.3 },
+  { s = "Vin", n = "input voltage", u = "V", x = 12.0 },
+  { s = "Vout", n = "output voltage", u = "V", x = 5.0 },
+  { s = "f", n = "switching frequency", u = "Hz", x = 500000.0 },
+  { s = "L", n = "inductance", u = "H", x = 1e-5 },
+]
+
+[[formula]]
+id = "junction-temperature"
+name = "Junction temperature"
+tags = "thermal junction heatsink"
+equation = "Tj = Ta + P*theta"
+notes = "theta is the total thermal resistance in kelvin per watt."
+source = "standard"
+vars = [
+  { s = "Tj", n = "junction temperature", u = "K", x = 350.0 },
+  { s = "Ta", n = "ambient temperature", u = "K", x = 298.0 },
+  { s = "P", n = "dissipated power", u = "W", x = 1.0 },
+  { s = "theta", n = "thermal resistance in K/W", x = 52.0 },
+]
+
+[[formula]]
+id = "johnson-noise"
+name = "Resistor thermal noise"
+tags = "noise johnson resistor"
+equation = "Vn = sqrt(4*kB*T*R*B)"
+source = "Johnson-Nyquist"
+vars = [
+  { s = "Vn", n = "noise voltage", u = "V", x = 1.3e-6 },
+  { s = "T", n = "temperature", u = "K", x = 290.0 },
+  { s = "R", n = "resistance", u = "ohm", x = 10000.0 },
+  { s = "B", n = "bandwidth", u = "Hz", x = 10000.0 },
+]
+
+[[formula]]
+id = "skin-depth"
+name = "Skin depth"
+tags = "rf skin depth conductor"
+equation = "delta = sqrt(rho/(pi*f*mu0))"
+notes = "Non-magnetic conductor."
+source = "standard"
+vars = [
+  { s = "delta", n = "skin depth", u = "m", x = 6.6e-6 },
+  { s = "rho", n = "resistivity", u = "ohm m", x = 1.68e-8 },
+  { s = "f", n = "frequency", u = "Hz", x = 100000000.0 },
+]
+
+[[formula]]
+id = "free-space-path-loss"
+name = "Free-space path loss"
+tags = "rf fspl path loss link"
+equation = "FSPL = 20*log10(d) + 20*log10(f) + 20*log10(4*pi/c0)"
+notes = "Distance in metres, frequency in hertz, loss in dB."
+source = "Friis"
+vars = [
+  { s = "FSPL", n = "path loss in dB", x = 100.0 },
+  { s = "d", n = "distance", u = "m", x = 1000.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 2.4e9 },
+]
+
+[[formula]]
+id = "friis-link"
+name = "Friis link budget"
+tags = "rf friis link received power"
+equation = "Pr = Pt + Gt + Gr - FSPL"
+notes = "All in dBm and dB."
+source = "Friis"
+vars = [
+  { s = "Pr", n = "received power in dBm", x = -70.0, signed = true },
+  { s = "Pt", n = "transmit power in dBm", x = 20.0, signed = true },
+  { s = "Gt", n = "transmit antenna gain in dBi", x = 3.0, signed = true },
+  { s = "Gr", n = "receive antenna gain in dBi", x = 3.0, signed = true },
+  { s = "FSPL", n = "path loss in dB", x = 96.0, signed = true },
+]
+
+[[formula]]
+id = "wavelength"
+name = "Wavelength in free space"
+tags = "rf wavelength frequency antenna"
+equation = "lambda = c0/f"
+source = "standard"
+vars = [
+  { s = "lambda", n = "wavelength", u = "m", x = 0.125 },
+  { s = "f", n = "frequency", u = "Hz", x = 2.4e9 },
+]
+
+[[formula]]
+id = "quarter-wave-antenna"
+name = "Quarter-wave antenna length"
+tags = "rf antenna quarter wave monopole"
+equation = "L = 0.25*vf*c0/f"
+notes = "vf is the velocity factor, about 0.95 for a wire in air."
+source = "standard"
+vars = [
+  { s = "L", n = "element length", u = "m", x = 0.5 },
+  { s = "vf", n = "velocity factor", x = 0.95, min = 0.0, max = 1.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 144000000.0 },
+]
+
+[[formula]]
+id = "half-wave-dipole"
+name = "Half-wave dipole length"
+tags = "rf antenna dipole"
+equation = "L = 0.5*vf*c0/f"
+source = "standard"
+vars = [
+  { s = "L", n = "total length", u = "m", x = 1.0 },
+  { s = "vf", n = "velocity factor", x = 0.95, min = 0.0, max = 1.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 144000000.0 },
+]

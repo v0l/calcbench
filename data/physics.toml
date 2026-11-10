@@ -1,0 +1,605 @@
+[[formula]]
+id = "kinematics-velocity"
+name = "Constant acceleration, final velocity"
+tags = "kinematics motion suvat"
+equation = "v = u + a*t"
+source = "standard"
+vars = [
+  { s = "v", n = "final velocity", u = "m/s", x = 20.0, signed = true },
+  { s = "u", n = "initial velocity", u = "m/s", x = 5.0, signed = true },
+  { s = "a", n = "acceleration", u = "m/s^2", x = 3.0, signed = true },
+  { s = "t", n = "time", u = "s", x = 5.0 },
+]
+
+[[formula]]
+id = "kinematics-displacement"
+name = "Constant acceleration, displacement"
+tags = "kinematics motion suvat distance"
+equation = "s = u*t + 0.5*a*t^2"
+source = "standard"
+vars = [
+  { s = "s", n = "displacement", u = "m", x = 62.5, signed = true },
+  { s = "u", n = "initial velocity", u = "m/s", x = 5.0, signed = true },
+  { s = "a", n = "acceleration", u = "m/s^2", x = 3.0, signed = true },
+  { s = "t", n = "time", u = "s", x = 5.0 },
+]
+
+[[formula]]
+id = "kinematics-velocity-squared"
+name = "Velocity without time"
+tags = "kinematics motion suvat"
+equation = "v^2 = u^2 + 2*a*s"
+source = "standard"
+vars = [
+  { s = "v", n = "final speed", u = "m/s", x = 20.0 },
+  { s = "u", n = "initial speed", u = "m/s", x = 5.0 },
+  { s = "a", n = "acceleration", u = "m/s^2", x = 3.0, signed = true },
+  { s = "s", n = "displacement", u = "m", x = 62.5, signed = true },
+]
+
+[[formula]]
+id = "newton-second"
+name = "Newton's second law"
+tags = "force mass acceleration newton"
+equation = "F = m*a"
+source = "standard"
+vars = [
+  { s = "F", n = "force", u = "N", x = 10.0, signed = true },
+  { s = "m", n = "mass", u = "kg", x = 2.0 },
+  { s = "a", n = "acceleration", u = "m/s^2", x = 5.0, signed = true },
+]
+
+[[formula]]
+id = "friction"
+name = "Friction force"
+tags = "friction force normal"
+equation = "Ff = mu*N"
+source = "standard"
+vars = [
+  { s = "Ff", n = "friction force", u = "N", x = 5.0 },
+  { s = "mu", n = "friction coefficient", x = 0.5 },
+  { s = "N", n = "normal force", u = "N", x = 10.0 },
+]
+
+[[formula]]
+id = "kinetic-energy"
+name = "Kinetic energy"
+tags = "energy work kinetic"
+equation = "Ek = 0.5*m*v^2"
+source = "standard"
+vars = [
+  { s = "Ek", n = "kinetic energy", u = "J", x = 100.0 },
+  { s = "m", n = "mass", u = "kg", x = 2.0 },
+  { s = "v", n = "speed", u = "m/s", x = 10.0 },
+]
+
+[[formula]]
+id = "potential-energy"
+name = "Gravitational potential energy"
+tags = "energy potential height"
+equation = "Ep = m*g0*h"
+source = "standard"
+vars = [
+  { s = "Ep", n = "potential energy", u = "J", x = 98.0 },
+  { s = "m", n = "mass", u = "kg", x = 10.0 },
+  { s = "h", n = "height", u = "m", x = 1.0, signed = true },
+]
+
+[[formula]]
+id = "work"
+name = "Work done by a force"
+tags = "energy work force angle"
+equation = "W = F*d*cos(theta)"
+notes = "theta is in radians."
+source = "standard"
+vars = [
+  { s = "W", n = "work", u = "J", x = 50.0 },
+  { s = "F", n = "force", u = "N", x = 10.0 },
+  { s = "d", n = "distance", u = "m", x = 10.0 },
+  { s = "theta", n = "angle in rad", x = 1.0471975511965976, min = 0.0, max = 1.5707963267948966 },
+]
+
+[[formula]]
+id = "mechanical-power"
+name = "Mechanical power"
+tags = "power work energy time"
+equation = "P = W/t"
+source = "standard"
+vars = [
+  { s = "P", n = "power", u = "W", x = 50.0 },
+  { s = "W", n = "work", u = "J", x = 500.0 },
+  { s = "t", n = "time", u = "s", x = 10.0 },
+]
+
+[[formula]]
+id = "rotational-power"
+name = "Rotational power"
+tags = "power torque rpm motor"
+equation = "P = T*omega"
+notes = "omega is in radians per second."
+source = "standard"
+vars = [
+  { s = "P", n = "power", u = "W", x = 100.0 },
+  { s = "T", n = "torque", u = "N m", x = 1.0 },
+  { s = "omega", n = "angular speed", u = "rad/s", x = 100.0 },
+]
+
+[[formula]]
+id = "momentum"
+name = "Momentum"
+tags = "momentum mass velocity"
+equation = "p = m*v"
+source = "standard"
+vars = [
+  { s = "p", n = "momentum", u = "kg m/s", x = 20.0, signed = true },
+  { s = "m", n = "mass", u = "kg", x = 2.0 },
+  { s = "v", n = "velocity", u = "m/s", x = 10.0, signed = true },
+]
+
+[[formula]]
+id = "impulse"
+name = "Impulse"
+tags = "momentum impulse force"
+equation = "F*dt = m*dv"
+source = "standard"
+vars = [
+  { s = "F", n = "force", u = "N", x = 20.0, signed = true },
+  { s = "dt", n = "contact time", u = "s", x = 0.1 },
+  { s = "m", n = "mass", u = "kg", x = 2.0 },
+  { s = "dv", n = "change in velocity", u = "m/s", x = 1.0, signed = true },
+]
+
+[[formula]]
+id = "projectile-range"
+name = "Projectile range"
+tags = "projectile motion range launch"
+equation = "R = v^2*sin(2*theta)/g0"
+notes = "Level ground, no drag. theta is in radians."
+source = "standard"
+vars = [
+  { s = "R", n = "range", u = "m", x = 10.2 },
+  { s = "v", n = "launch speed", u = "m/s", x = 10.0 },
+  { s = "theta", n = "launch angle in rad", x = 0.35, min = 0.0, max = 0.7853981633974483 },
+]
+
+[[formula]]
+id = "projectile-height"
+name = "Projectile maximum height"
+tags = "projectile motion height launch"
+equation = "H = v^2*sin(theta)^2/(2*g0)"
+notes = "theta is in radians."
+source = "standard"
+vars = [
+  { s = "H", n = "maximum height", u = "m", x = 1.3 },
+  { s = "v", n = "launch speed", u = "m/s", x = 10.0 },
+  { s = "theta", n = "launch angle in rad", x = 0.5, min = 0.0, max = 1.5707963267948966 },
+]
+
+[[formula]]
+id = "centripetal-acceleration"
+name = "Centripetal acceleration"
+tags = "circular motion centripetal"
+equation = "ac = v^2/r"
+source = "standard"
+vars = [
+  { s = "ac", n = "acceleration", u = "m/s^2", x = 10.0 },
+  { s = "v", n = "speed", u = "m/s", x = 10.0 },
+  { s = "r", n = "radius", u = "m", x = 10.0 },
+]
+
+[[formula]]
+id = "centripetal-force"
+name = "Centripetal force"
+tags = "circular motion centripetal force"
+equation = "F = m*omega^2*r"
+source = "standard"
+vars = [
+  { s = "F", n = "force", u = "N", x = 100.0 },
+  { s = "m", n = "mass", u = "kg", x = 1.0 },
+  { s = "omega", n = "angular speed", u = "rad/s", x = 10.0 },
+  { s = "r", n = "radius", u = "m", x = 1.0 },
+]
+
+[[formula]]
+id = "gravitation"
+name = "Newtonian gravitation"
+tags = "gravity orbit force"
+equation = "F = G_grav*m1*m2/r^2"
+source = "Newton"
+vars = [
+  { s = "F", n = "force", u = "N", x = 1e-9 },
+  { s = "m1", n = "first mass", u = "kg", x = 1.0 },
+  { s = "m2", n = "second mass", u = "kg", x = 10.0 },
+  { s = "r", n = "separation", u = "m", x = 1.0 },
+]
+
+[[formula]]
+id = "orbital-velocity"
+name = "Circular orbit speed"
+tags = "gravity orbit satellite velocity"
+equation = "v = sqrt(G_grav*M/r)"
+source = "Newton"
+vars = [
+  { s = "v", n = "orbital speed", u = "m/s", x = 7660.0 },
+  { s = "M", n = "central mass", u = "kg", x = 5.9722e24 },
+  { s = "r", n = "orbit radius", u = "m", x = 6.8e6 },
+]
+
+[[formula]]
+id = "orbital-period"
+name = "Orbital period"
+tags = "gravity orbit kepler period"
+equation = "T = 2*pi*sqrt(a^3/(G_grav*M))"
+source = "Kepler"
+vars = [
+  { s = "T", n = "period", u = "s", x = 5580.0 },
+  { s = "a", n = "semi-major axis", u = "m", x = 6.8e6 },
+  { s = "M", n = "central mass", u = "kg", x = 5.9722e24 },
+]
+
+[[formula]]
+id = "escape-velocity"
+name = "Escape velocity"
+tags = "gravity escape velocity"
+equation = "v = sqrt(2*G_grav*M/r)"
+source = "Newton"
+vars = [
+  { s = "v", n = "escape speed", u = "m/s", x = 11186.0 },
+  { s = "M", n = "mass", u = "kg", x = 5.9722e24 },
+  { s = "r", n = "radius", u = "m", x = 6.371e6 },
+]
+
+[[formula]]
+id = "hooke"
+name = "Hooke's law"
+tags = "spring force hooke"
+equation = "F = k*x"
+source = "standard"
+vars = [
+  { s = "F", n = "force", u = "N", x = 10.0, signed = true },
+  { s = "k", n = "spring constant", u = "N/m", x = 500.0 },
+  { s = "x", n = "extension", u = "m", x = 0.02, signed = true },
+]
+
+[[formula]]
+id = "spring-energy"
+name = "Spring energy"
+tags = "spring energy"
+equation = "E = 0.5*k*x^2"
+source = "standard"
+vars = [
+  { s = "E", n = "energy", u = "J", x = 0.1 },
+  { s = "k", n = "spring constant", u = "N/m", x = 500.0 },
+  { s = "x", n = "extension", u = "m", x = 0.02 },
+]
+
+[[formula]]
+id = "shm-period"
+name = "Spring mass oscillation period"
+tags = "shm spring oscillation period"
+equation = "T = 2*pi*sqrt(m/k)"
+source = "standard"
+vars = [
+  { s = "T", n = "period", u = "s", x = 0.3 },
+  { s = "m", n = "mass", u = "kg", x = 1.0 },
+  { s = "k", n = "spring constant", u = "N/m", x = 500.0 },
+]
+
+[[formula]]
+id = "pendulum-period"
+name = "Simple pendulum period"
+tags = "pendulum shm period"
+equation = "T = 2*pi*sqrt(L/g0)"
+notes = "Small angles."
+source = "standard"
+vars = [
+  { s = "T", n = "period", u = "s", x = 2.0 },
+  { s = "L", n = "length", u = "m", x = 1.0 },
+]
+
+[[formula]]
+id = "bernoulli"
+name = "Bernoulli's equation"
+tags = "fluids bernoulli pressure flow"
+equation = "P1 + 0.5*rho*v1^2 + rho*g0*h1 = P2 + 0.5*rho*v2^2 + rho*g0*h2"
+source = "standard"
+vars = [
+  { s = "P1", n = "pressure at 1", u = "Pa", x = 200000.0 },
+  { s = "v1", n = "speed at 1", u = "m/s", x = 2.0 },
+  { s = "h1", n = "height at 1", u = "m", x = 0.0, signed = true },
+  { s = "P2", n = "pressure at 2", u = "Pa", x = 190000.0 },
+  { s = "v2", n = "speed at 2", u = "m/s", x = 4.0 },
+  { s = "h2", n = "height at 2", u = "m", x = 0.0, signed = true },
+  { s = "rho", n = "density", u = "kg/m^3", x = 1000.0 },
+]
+
+[[formula]]
+id = "continuity"
+name = "Flow continuity"
+tags = "fluids flow continuity pipe"
+equation = "A1*v1 = A2*v2"
+source = "standard"
+vars = [
+  { s = "A1", n = "area 1", u = "m^2", x = 0.01 },
+  { s = "v1", n = "speed 1", u = "m/s", x = 2.0 },
+  { s = "A2", n = "area 2", u = "m^2", x = 0.005 },
+  { s = "v2", n = "speed 2", u = "m/s", x = 4.0 },
+]
+
+[[formula]]
+id = "reynolds"
+name = "Reynolds number"
+tags = "fluids reynolds flow pipe turbulence"
+equation = "Re = rho*v*D/mu"
+source = "standard"
+vars = [
+  { s = "Re", n = "Reynolds number", x = 10000.0 },
+  { s = "rho", n = "density", u = "kg/m^3", x = 1000.0 },
+  { s = "v", n = "speed", u = "m/s", x = 1.0 },
+  { s = "D", n = "diameter", u = "m", x = 0.01 },
+  { s = "mu", n = "dynamic viscosity", u = "Pa s", x = 0.001 },
+]
+
+[[formula]]
+id = "hydrostatic-pressure"
+name = "Hydrostatic pressure"
+tags = "fluids pressure depth"
+equation = "P = P0 + rho*g0*h"
+source = "standard"
+vars = [
+  { s = "P", n = "pressure", u = "Pa", x = 200000.0 },
+  { s = "P0", n = "surface pressure", u = "Pa", x = 101325.0 },
+  { s = "rho", n = "density", u = "kg/m^3", x = 1000.0 },
+  { s = "h", n = "depth", u = "m", x = 10.0 },
+]
+
+[[formula]]
+id = "buoyancy"
+name = "Buoyant force"
+tags = "fluids buoyancy archimedes"
+equation = "Fb = rho*g0*V"
+source = "Archimedes"
+vars = [
+  { s = "Fb", n = "buoyant force", u = "N", x = 98.0 },
+  { s = "rho", n = "fluid density", u = "kg/m^3", x = 1000.0 },
+  { s = "V", n = "displaced volume", u = "m^3", x = 0.01 },
+]
+
+[[formula]]
+id = "ideal-gas"
+name = "Ideal gas law"
+tags = "thermodynamics gas pressure volume temperature"
+equation = "P*V = n*R_gas*T"
+source = "standard"
+vars = [
+  { s = "P", n = "pressure", u = "Pa", x = 101325.0 },
+  { s = "V", n = "volume", u = "m^3", x = 0.0224 },
+  { s = "n", n = "amount", u = "mol", x = 1.0 },
+  { s = "T", n = "temperature", u = "K", x = 273.15 },
+]
+
+[[formula]]
+id = "heat-capacity"
+name = "Heat to change temperature"
+tags = "thermodynamics heat specific capacity"
+equation = "Q = m*c*dT"
+source = "standard"
+vars = [
+  { s = "Q", n = "heat", u = "J", x = 41840.0, signed = true },
+  { s = "m", n = "mass", u = "kg", x = 1.0 },
+  { s = "c", n = "specific heat", u = "J/(kg K)", x = 4184.0 },
+  { s = "dT", n = "temperature change", u = "K", x = 10.0, signed = true },
+]
+
+[[formula]]
+id = "conduction"
+name = "Heat conduction through a slab"
+tags = "thermodynamics heat conduction fourier"
+equation = "Q = k*A*dT/d"
+notes = "Q is the heat flow in watts."
+source = "Fourier"
+vars = [
+  { s = "Q", n = "heat flow", u = "W", x = 40.0 },
+  { s = "k", n = "conductivity", u = "W/(m K)", x = 0.4 },
+  { s = "A", n = "area", u = "m^2", x = 2.0 },
+  { s = "dT", n = "temperature difference", u = "K", x = 20.0, signed = true },
+  { s = "d", n = "thickness", u = "m", x = 0.4 },
+]
+
+[[formula]]
+id = "convection"
+name = "Convective heat transfer"
+tags = "thermodynamics heat convection newton cooling"
+equation = "Q = h*A*dT"
+source = "Newton's law of cooling"
+vars = [
+  { s = "Q", n = "heat flow", u = "W", x = 50.0 },
+  { s = "h", n = "heat transfer coefficient", u = "W/(m^2 K)", x = 10.0 },
+  { s = "A", n = "area", u = "m^2", x = 0.5 },
+  { s = "dT", n = "temperature difference", u = "K", x = 10.0, signed = true },
+]
+
+[[formula]]
+id = "radiation"
+name = "Thermal radiation"
+tags = "thermodynamics heat radiation stefan boltzmann"
+equation = "Q = eps*sigma_sb*A*T^4"
+source = "Stefan-Boltzmann"
+vars = [
+  { s = "Q", n = "radiated power", u = "W", x = 460.0 },
+  { s = "eps", n = "emissivity", x = 0.9, min = 0.0, max = 1.0 },
+  { s = "A", n = "area", u = "m^2", x = 1.0 },
+  { s = "T", n = "temperature", u = "K", x = 300.0 },
+]
+
+[[formula]]
+id = "wave-speed"
+name = "Wave speed"
+tags = "waves speed wavelength frequency"
+equation = "v = f*lambda"
+source = "standard"
+vars = [
+  { s = "v", n = "wave speed", u = "m/s", x = 343.0 },
+  { s = "f", n = "frequency", u = "Hz", x = 440.0 },
+  { s = "lambda", n = "wavelength", u = "m", x = 0.78 },
+]
+
+[[formula]]
+id = "speed-of-sound"
+name = "Speed of sound in air"
+tags = "waves sound speed temperature"
+equation = "v = sqrt(gamma_air*R_air*T)"
+source = "standard"
+vars = [
+  { s = "v", n = "speed of sound", u = "m/s", x = 343.0 },
+  { s = "gamma_air", n = "heat capacity ratio", x = 1.4 },
+  { s = "R_air", n = "specific gas constant", u = "J/(kg K)", x = 287.05 },
+  { s = "T", n = "temperature", u = "K", x = 293.15 },
+]
+
+[[formula]]
+id = "doppler"
+name = "Doppler shift"
+tags = "waves doppler frequency source moving"
+equation = "fo = fs*(v + vo)/(v - vs)"
+notes = "vo positive towards the source, vs positive towards the observer."
+source = "standard"
+vars = [
+  { s = "fo", n = "observed frequency", u = "Hz", x = 460.0 },
+  { s = "fs", n = "source frequency", u = "Hz", x = 440.0 },
+  { s = "v", n = "wave speed", u = "m/s", x = 343.0 },
+  { s = "vo", n = "observer speed", u = "m/s", x = 0.0, signed = true },
+  { s = "vs", n = "source speed", u = "m/s", x = 15.0, signed = true },
+]
+
+[[formula]]
+id = "snell"
+name = "Snell's law"
+tags = "optics refraction snell"
+equation = "n1*sin(t1) = n2*sin(t2)"
+notes = "Angles in radians from the normal."
+source = "standard"
+vars = [
+  { s = "n1", n = "index 1", x = 1.0 },
+  { s = "t1", n = "angle 1 in rad", x = 0.5, min = 0.0, max = 1.5707963267948966 },
+  { s = "n2", n = "index 2", x = 1.5 },
+  { s = "t2", n = "angle 2 in rad", x = 0.3, min = 0.0, max = 1.5707963267948966 },
+]
+
+[[formula]]
+id = "thin-lens"
+name = "Thin lens equation"
+tags = "optics lens focal length"
+equation = "1/f = 1/do + 1/di"
+source = "standard"
+vars = [
+  { s = "f", n = "focal length", u = "m", x = 0.1, signed = true },
+  { s = "do", n = "object distance", u = "m", x = 0.3 },
+  { s = "di", n = "image distance", u = "m", x = 0.15, signed = true },
+]
+
+[[formula]]
+id = "beam-deflection-cantilever"
+name = "Cantilever end deflection"
+tags = "beam bending deflection cantilever"
+equation = "d = F*L^3/(3*E*I)"
+notes = "Point load at the free end."
+source = "Euler-Bernoulli"
+vars = [
+  { s = "d", n = "deflection", u = "m", x = 0.005 },
+  { s = "F", n = "load", u = "N", x = 100.0 },
+  { s = "L", n = "length", u = "m", x = 0.5 },
+  { s = "E", n = "Young's modulus", u = "Pa", x = 200e9 },
+  { s = "I", n = "second moment of area", u = "m^4", x = 1e-8 },
+]
+
+[[formula]]
+id = "beam-deflection-simple"
+name = "Simply supported beam centre deflection"
+tags = "beam bending deflection"
+equation = "d = F*L^3/(48*E*I)"
+notes = "Point load at the centre."
+source = "Euler-Bernoulli"
+vars = [
+  { s = "d", n = "deflection", u = "m", x = 0.001 },
+  { s = "F", n = "load", u = "N", x = 1000.0 },
+  { s = "L", n = "span", u = "m", x = 1.0 },
+  { s = "E", n = "Young's modulus", u = "Pa", x = 200e9 },
+  { s = "I", n = "second moment of area", u = "m^4", x = 1e-8 },
+]
+
+[[formula]]
+id = "bending-stress"
+name = "Bending stress"
+tags = "beam stress bending"
+equation = "sigma = M*y/I"
+source = "Euler-Bernoulli"
+vars = [
+  { s = "sigma", n = "stress", u = "Pa", x = 1e8, signed = true },
+  { s = "M", n = "bending moment", u = "N m", x = 100.0, signed = true },
+  { s = "y", n = "distance from neutral axis", u = "m", x = 0.01, signed = true },
+  { s = "I", n = "second moment of area", u = "m^4", x = 1e-8 },
+]
+
+[[formula]]
+id = "stress-strain"
+name = "Stress and strain"
+tags = "stress strain young modulus hooke"
+equation = "sigma = E*eps"
+source = "Hooke"
+vars = [
+  { s = "sigma", n = "stress", u = "Pa", x = 2e8, signed = true },
+  { s = "E", n = "Young's modulus", u = "Pa", x = 200e9 },
+  { s = "eps", n = "strain", x = 0.001, signed = true },
+]
+
+[[formula]]
+id = "axial-stress"
+name = "Axial stress"
+tags = "stress force area"
+equation = "sigma = F/A"
+source = "standard"
+vars = [
+  { s = "sigma", n = "stress", u = "Pa", x = 1e6, signed = true },
+  { s = "F", n = "force", u = "N", x = 1000.0, signed = true },
+  { s = "A", n = "area", u = "m^2", x = 0.001 },
+]
+
+[[formula]]
+id = "torque"
+name = "Torque from force and arm"
+tags = "torque lever force"
+equation = "T = F*r"
+source = "standard"
+vars = [
+  { s = "T", n = "torque", u = "N m", x = 10.0 },
+  { s = "F", n = "force", u = "N", x = 50.0 },
+  { s = "r", n = "arm length", u = "m", x = 0.2 },
+]
+
+[[formula]]
+id = "gear-ratio"
+name = "Gear train ratio"
+tags = "gears ratio torque speed"
+equation = "Tout/Tin = Nout/Nin"
+notes = "Ideal, no losses. Speed falls as torque rises."
+source = "standard"
+vars = [
+  { s = "Tout", n = "output torque", u = "N m", x = 30.0 },
+  { s = "Tin", n = "input torque", u = "N m", x = 10.0 },
+  { s = "Nout", n = "output teeth", x = 60.0 },
+  { s = "Nin", n = "input teeth", x = 20.0 },
+]
+
+[[formula]]
+id = "gear-speed"
+name = "Gear speed"
+tags = "gears ratio speed rpm"
+equation = "wout = win*Nin/Nout"
+source = "standard"
+vars = [
+  { s = "wout", n = "output speed", u = "rpm", x = 100.0 },
+  { s = "win", n = "input speed", u = "rpm", x = 300.0 },
+  { s = "Nin", n = "input teeth", x = 20.0 },
+  { s = "Nout", n = "output teeth", x = 60.0 },
+]

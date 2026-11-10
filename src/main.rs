@@ -1,9 +1,10 @@
 fn main() {
-    let mut c = calcbench::engine::Calc::new();
-    for l in std::env::args().skip(1) {
-        match c.eval(&l) {
-            Ok(r) => println!("{l} => {r}"),
-            Err(e) => println!("{l} => ERR {e}"),
+    let args: Vec<String> = std::env::args().skip(1).collect();
+    match calcbench::cli::run(&args) {
+        Ok(out) => println!("{out}"),
+        Err(e) => {
+            eprintln!("error: {e}");
+            std::process::exit(1);
         }
     }
 }

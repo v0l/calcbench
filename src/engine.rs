@@ -172,6 +172,7 @@ fn mark_temperatures(tokens: &mut [Token]) {
         if let Tok::Ident(x) = &t.tok {
             match x.as_str() {
                 "C" if count < 2 => t.tok = Tok::Ident("coulomb".into()),
+                "F" if count < 2 => t.tok = Tok::Ident("farad".into()),
                 _ if count < 2 => {}
                 "C" => t.tok = Tok::Ident("°C".into()),
                 "F" => t.tok = Tok::Ident("°F".into()),

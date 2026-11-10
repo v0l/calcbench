@@ -117,3 +117,12 @@ fn every_listed_quantity_has_a_working_unit() {
         c.value_in(expr, unit).unwrap_or_else(|e| panic!("{expr} to {unit}: {e}"));
     }
 }
+
+#[test]
+fn farad_and_coulomb_are_not_temperatures() {
+    let mut c = Calc::new();
+    close(num(&mut c, "100 nF", "uF"), 0.1);
+    close(num(&mut c, "1 F", "mF"), 1000.0);
+    close(num(&mut c, "2 C", "mC"), 2000.0);
+    assert_eq!(c.eval("100 nF to F").unwrap(), "0.0000001 farad");
+}
