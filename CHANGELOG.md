@@ -6,7 +6,7 @@ All notable changes to calcbench are listed here. The format follows
 
 ## [Unreleased]
 
-## [0.1.0] - 2026-11-10
+## [0.1.0] - 2026-11-17
 
 ### Added
 - Unit conversion and expressions with units on fend-core, with temperature offsets, fuel economy, dB scales and dimension errors.
